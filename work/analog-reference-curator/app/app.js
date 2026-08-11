@@ -6,12 +6,24 @@ const folderName = document.querySelector("#folderName");
 const briefFolder = document.querySelector("#briefFolder");
 const briefResult = document.querySelector("#briefResult");
 const exportBrief = document.querySelector("#exportBrief");
+const statusFilter = document.querySelector("#statusFilter");
+const folderFilter = document.querySelector("#folderFilter");
+const searchFilter = document.querySelector("#searchFilter");
+const unfiledKeepFilter = document.querySelector("#unfiledKeepFilter");
 const template = document.querySelector("#candidateTemplate");
+const { applyBoardFilters } = window.AnalogReferenceFilters;
 
 let state = {
   candidates: [],
   folders: [],
   reviewState: { reviewed: false }
+};
+
+let boardFilters = {
+  status: "ALL",
+  folder: "ALL",
+  query: "",
+  special: "ALL"
 };
 
 async function request(path, options = {}) {
@@ -35,6 +47,7 @@ function render() {
   renderReviewToggle();
   renderStats();
   renderBriefControls();
+  renderFilterControls();
   renderBoard();
 }
 
@@ -62,6 +75,18 @@ function renderStats() {
   `;
 }
 
+function renderFilterControls() {
+  const currentFolder = folderFilter.value || boardFilters.folder;
+  folderFilter.replaceChildren(new Option("All folders", "ALL"));
+  state.folders.forEach((folder) => {
+    folderFilter.append(new Option(folder.name, folder.slug));
+  });
+  folderFilter.value = [...folderFilter.options].some((option) => option.value === currentFolder)
+    ? currentFolder
+    : "ALL";
+  boardFilters.folder = folderFilter.value;
+}
+
 function renderBriefControls() {
   briefFolder.replaceChildren();
   state.folders.forEach((folder) => {
@@ -75,7 +100,13 @@ function renderBriefControls() {
 
 function renderBoard() {
   board.replaceChildren();
-  state.candidates.forEach((candidate) => {
+  const candidates = applyBoardFilters(state.candidates, boardFilters);
+  if (!candidates.length) {
+    board.innerHTML = `<p class="empty-state">No references match this view.</p>`;
+    return;
+  }
+
+  candidates.forEach((candidate) => {
     const node = template.content.firstElementChild.cloneNode(true);
     node.dataset.status = candidate.status;
     node.querySelector(".source-type").textContent = candidate.sourceType;
@@ -162,6 +193,31 @@ exportBrief.addEventListener("click", async () => {
   briefResult.textContent = "Exporting...";
   const result = await request(`/api/folders/${slug}/export-brief`, { method: "POST" });
   briefResult.innerHTML = `${result.referenceCount} references exported to <code>${result.briefPath}</code>`;
+});
+
+statusFilter.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-status]");
+  if (!button) return;
+  boardFilters.status = button.dataset.status;
+  statusFilter.querySelectorAll("button").forEach((item) => {
+    item.setAttribute("aria-pressed", String(item === button));
+  });
+  renderBoard();
+});
+
+folderFilter.addEventListener("change", () => {
+  boardFilters.folder = folderFilter.value;
+  renderBoard();
+});
+
+searchFilter.addEventListener("input", () => {
+  boardFilters.query = searchFilter.value;
+  renderBoard();
+});
+
+unfiledKeepFilter.addEventListener("change", () => {
+  boardFilters.special = unfiledKeepFilter.checked ? "UNFILED_KEEP" : "ALL";
+  renderBoard();
 });
 
 loadState().catch((error) => {

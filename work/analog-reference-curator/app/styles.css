@@ -150,6 +150,60 @@ main {
   color: var(--ink);
 }
 
+.filter-panel {
+  display: grid;
+  grid-template-columns: auto minmax(150px, 220px) minmax(180px, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(58px, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--sheet);
+}
+
+.segmented button {
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 9px;
+  cursor: pointer;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.segmented button:last-child {
+  border-right: 0;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.filter-panel label {
+  display: grid;
+  gap: 5px;
+}
+
+.checkbox-filter {
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.checkbox-filter input {
+  width: 16px;
+  height: 16px;
+}
+
 .folder-form {
   display: flex;
   align-items: end;
@@ -308,6 +362,16 @@ h2 {
   background: #fff2f5;
 }
 
+.empty-state {
+  grid-column: 1 / -1;
+  border: 1px dashed var(--line);
+  border-radius: 7px;
+  background: rgba(255, 253, 247, 0.78);
+  color: var(--muted);
+  padding: 24px;
+  text-align: center;
+}
+
 @media (max-width: 720px) {
   .topbar,
   .toolbar,
@@ -316,6 +380,10 @@ h2 {
     align-items: stretch;
     grid-template-columns: 1fr;
     flex-direction: column;
+  }
+
+  .filter-panel {
+    grid-template-columns: 1fr;
   }
 
   .brief-controls {
