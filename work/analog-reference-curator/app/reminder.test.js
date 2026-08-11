@@ -12,7 +12,8 @@ test("buildReminderDecision skips when today is reviewed", () => {
   assert.deepEqual(decision, {
     shouldSend: false,
     reason: "already-reviewed",
-    message: ""
+    message: "",
+    email: null
   });
 });
 
@@ -27,6 +28,9 @@ test("buildReminderDecision sends when today is not reviewed", () => {
   assert.equal(decision.reason, "review-needed");
   assert.match(decision.message, /5 analog references/);
   assert.match(decision.message, /REVIEW ON/);
+  assert.equal(decision.email.to, "me");
+  assert.match(decision.email.subject, /Analog references need review/);
+  assert.match(decision.email.body, /http:\/\/127\.0\.0\.1:4173\//);
 });
 
 test("buildReminderDecision sends when review state is stale", () => {

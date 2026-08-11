@@ -9,18 +9,32 @@ function buildReminderDecision(reviewState, today, candidateCount) {
     return {
       shouldSend: false,
       reason: "already-reviewed",
-      message: ""
+      message: "",
+      email: null
     };
   }
 
   const reason = reviewState.date === today ? "review-needed" : "stale-review-state";
+  const message = [
+    `You have ${candidateCount} analog references waiting for review.`,
+    "Open the local curator, mark KEEP/KILL/MAYBE, then switch REVIEW ON."
+  ].join(" ");
+
   return {
     shouldSend: true,
     reason,
-    message: [
-      `You have ${candidateCount} analog references waiting for review.`,
-      "Open the local curator, mark KEEP/KILL/MAYBE, then switch REVIEW ON."
-    ].join(" ")
+    message,
+    email: {
+      to: "me",
+      subject: `Analog references need review (${today})`,
+      body: [
+        message,
+        "",
+        "Local board: http://127.0.0.1:4173/",
+        "",
+        `Reason: ${reason}`
+      ].join("\n")
+    }
   };
 }
 

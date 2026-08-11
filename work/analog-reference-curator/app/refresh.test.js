@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 const { refreshCandidates } = require("./refresh");
+const { buildRefreshSummary } = require("./refresh");
 
 const today = "2026-08-12";
 const now = "2026-08-12T00:05:00+09:00";
@@ -78,4 +79,14 @@ test("refreshCandidates skips seed urls already preserved", () => {
 
   assert.equal(refreshed.some((candidate) => candidate.id === `${today}-seed-1`), false);
   assert.equal(refreshed.filter((candidate) => candidate.status === "MAYBE").length, 5);
+});
+
+test("buildRefreshSummary includes Gmail-ready collection email", () => {
+  const summary = buildRefreshSummary("2026-08-12", 1, 5);
+
+  assert.equal(summary.date, "2026-08-12");
+  assert.equal(summary.email.to, "me");
+  assert.match(summary.email.subject, /Analog references collected/);
+  assert.match(summary.email.body, /5 fresh candidates/);
+  assert.match(summary.email.body, /http:\/\/127\.0\.0\.1:4173\//);
 });

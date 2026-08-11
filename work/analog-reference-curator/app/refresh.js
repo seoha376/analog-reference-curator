@@ -27,6 +27,26 @@ function refreshCandidates(existingCandidates, seedCandidates, date, now) {
   return [...kept, ...fresh];
 }
 
+function buildRefreshSummary(date, kept, fresh) {
+  const message = `Daily analog reference refresh complete: ${fresh} fresh candidates, ${kept} kept references preserved.`;
+  return {
+    date,
+    kept,
+    fresh,
+    message,
+    email: {
+      to: "me",
+      subject: `Analog references collected (${date})`,
+      body: [
+        message,
+        "",
+        "Open the local curator to review today's board:",
+        "http://127.0.0.1:4173/"
+      ].join("\n")
+    }
+  };
+}
+
 function todayKst() {
   return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
@@ -59,17 +79,17 @@ async function runDailyRefresh() {
   await writeJson(candidatesFile, candidates);
   await writeJson(reviewStateFile, { date, reviewed: false, updatedAt: now });
 
-  return {
+  return buildRefreshSummary(
     date,
-    kept: candidates.filter((candidate) => candidate.status === "KEEP").length,
-    fresh: candidates.filter((candidate) => candidate.status === "MAYBE").length
-  };
+    candidates.filter((candidate) => candidate.status === "KEEP").length,
+    candidates.filter((candidate) => candidate.status === "MAYBE").length
+  );
 }
 
 if (require.main === module) {
   runDailyRefresh()
     .then((result) => {
-      console.log(`Daily refresh complete: ${result.kept} kept, ${result.fresh} fresh for ${result.date}`);
+      console.log(JSON.stringify(result, null, 2));
     })
     .catch((error) => {
       console.error(error);
@@ -78,6 +98,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildRefreshSummary,
   refreshCandidates,
   runDailyRefresh
 };
