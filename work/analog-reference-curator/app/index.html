@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analog Reference Curator</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Analog Reference Curator</p>
+        <h1>Today's tiny web references</h1>
+      </div>
+      <button class="review-sign" id="reviewToggle" type="button" aria-pressed="false">
+        REVIEW OFF
+      </button>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="Board tools">
+        <form id="folderForm" class="folder-form">
+          <label for="folderName">New folder</label>
+          <input id="folderName" name="folderName" type="text" placeholder="e.g. Receipt Garden">
+          <button type="submit">Create</button>
+        </form>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section class="board" id="board" aria-label="Candidate board"></section>
+    </main>
+
+    <template id="candidateTemplate">
+      <article class="candidate">
+        <div class="candidate-header">
+          <div>
+            <p class="source-type"></p>
+            <h2></h2>
+          </div>
+          <a class="open-link" target="_blank" rel="noreferrer">Open Site</a>
+        </div>
+        <p class="summary"></p>
+        <div class="cue-list"></div>
+        <div class="status-row" aria-label="Candidate status controls"></div>
+        <label class="field">
+          Folder
+          <select class="folder-select"></select>
+        </label>
+        <label class="field">
+          Notes
+          <textarea class="notes" rows="3" placeholder="What should survive into a future UI brief?"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

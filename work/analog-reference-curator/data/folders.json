@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "stationery-desk",
+    "name": "Stationery Desk",
+    "mood": ["analog", "cute", "dense", "stationery"],
+    "createdAt": "2026-08-12T00:05:00+09:00"
+  },
+  {
+    "slug": "tiny-magazine",
+    "name": "Tiny Magazine",
+    "mood": ["editorial", "dense", "japanese-magazine", "curation"],
+    "createdAt": "2026-08-12T00:05:00+09:00"
+  },
+  {
+    "slug": "soft-shop-shelf",
+    "name": "Soft Shop Shelf",
+    "mood": ["catalog", "goods", "soft-commerce", "shelf"],
+    "createdAt": "2026-08-12T00:05:00+09:00"
+  },
+  {
+    "slug": "night-letter",
+    "name": "Night Letter",
+    "mood": ["night", "letter", "reading", "desk-light"],
+    "createdAt": "2026-08-12T00:05:00+09:00"
+  },
+  {
+    "slug": "local-poster-board",
+    "name": "Local Poster Board",
+    "mood": ["community", "poster", "local", "notice-board"],
+    "createdAt": "2026-08-12T00:05:00+09:00"
+  }
+]

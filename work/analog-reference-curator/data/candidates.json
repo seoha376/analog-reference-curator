@@ -1,0 +1,229 @@
+[
+  {
+    "id": "2026-08-12-kawaii-db",
+    "title": "Kawaii DB",
+    "url": "https://kawaiie.taniweb.jp/",
+    "sourceType": "Gallery",
+    "status": "MAYBE",
+    "folder": null,
+    "summary": "Women's-oriented and cute Japanese web gallery with soft commercial layouts, cafes, lifestyle brands, and color browsing.",
+    "frontendElements": {
+      "typography": [
+        "small captions",
+        "friendly headings",
+        "soft Japanese editorial rhythm"
+      ],
+      "layout": [
+        "dense gallery grid",
+        "compact metadata",
+        "image-text cadence"
+      ],
+      "color": [
+        "soft pastels",
+        "low-contrast borders",
+        "gentle accents"
+      ],
+      "texture": [
+        "paper-like whitespace",
+        "sticker-like thumbnails"
+      ],
+      "components": [
+        "tiny badges",
+        "thumbnail cards",
+        "category filters"
+      ],
+      "motion": [
+        "gentle hover emphasis"
+      ]
+    },
+    "avoid": [
+      "large SaaS hero",
+      "dark startup gradient"
+    ],
+    "notes": "",
+    "createdAt": "2026-08-12T00:05:00+09:00",
+    "keptAt": null
+  },
+  {
+    "id": "2026-08-12-choooodoii-cute",
+    "title": "Choooodoii Cute Gallery",
+    "url": "https://choooodoii.com/design/cute/",
+    "sourceType": "Gallery",
+    "status": "MAYBE",
+    "folder": null,
+    "summary": "Retro, nostalgic, and cute Japanese web examples with helpful commentary for extracting taste.",
+    "frontendElements": {
+      "typography": [
+        "handwritten titles",
+        "small explanatory copy",
+        "nostalgic display lettering"
+      ],
+      "layout": [
+        "boxed sections",
+        "small shop-like modules",
+        "editorial spacing"
+      ],
+      "color": [
+        "candy colors",
+        "warm neutrals",
+        "faded retro accents"
+      ],
+      "texture": [
+        "snack-box feeling",
+        "illustration texture",
+        "thin dividers"
+      ],
+      "components": [
+        "comment blocks",
+        "category labels",
+        "small framed images"
+      ],
+      "motion": [
+        "subtle button hover",
+        "calm page transitions"
+      ]
+    },
+    "avoid": [
+      "over-polished template feel",
+      "oversized gradient sections"
+    ],
+    "notes": "",
+    "createdAt": "2026-08-12T00:05:00+09:00",
+    "keptAt": null
+  },
+  {
+    "id": "2026-08-12-sankou-cute",
+    "title": "SANKOU! Cute",
+    "url": "https://sankoudesign.com/category/cute/",
+    "sourceType": "Gallery",
+    "status": "MAYBE",
+    "folder": null,
+    "summary": "Frequently updated Japanese commercial web gallery with cute examples that still feel applicable to real services.",
+    "frontendElements": {
+      "typography": [
+        "rounded headings",
+        "compact Japanese captions",
+        "clear metadata"
+      ],
+      "layout": [
+        "filterable index",
+        "thumbnail rhythm",
+        "commercial landing sections"
+      ],
+      "color": [
+        "fresh mixed palettes",
+        "soft brand accents"
+      ],
+      "texture": [
+        "polished but warm surfaces",
+        "light paper shadows"
+      ],
+      "components": [
+        "tags",
+        "case cards",
+        "date labels"
+      ],
+      "motion": [
+        "light hover lifts",
+        "gallery browsing motion"
+      ]
+    },
+    "avoid": [
+      "generic SaaS cards",
+      "cold corporate polish"
+    ],
+    "notes": "",
+    "createdAt": "2026-08-12T00:05:00+09:00",
+    "keptAt": null
+  },
+  {
+    "id": "2026-08-12-japan-web-design-gallery",
+    "title": "Japan Web Design Gallery",
+    "url": "https://japanwebdesign.com/",
+    "sourceType": "Gallery",
+    "status": "MAYBE",
+    "folder": null,
+    "summary": "Japanese web gallery with tags like Kawaii, Quirky, and Messy for fast mood-based browsing.",
+    "frontendElements": {
+      "typography": [
+        "tag-driven labels",
+        "compact listing text"
+      ],
+      "layout": [
+        "tag browsing",
+        "multi-column gallery",
+        "quick-scan thumbnails"
+      ],
+      "color": [
+        "varied Japanese brand palettes",
+        "quirky accents"
+      ],
+      "texture": [
+        "mixed media cues",
+        "screen-capture collage"
+      ],
+      "components": [
+        "tag chips",
+        "gallery filters",
+        "preview tiles"
+      ],
+      "motion": [
+        "simple hover feedback"
+      ]
+    },
+    "avoid": [
+      "single-hue palette",
+      "flat template uniformity"
+    ],
+    "notes": "",
+    "createdAt": "2026-08-12T00:05:00+09:00",
+    "keptAt": null
+  },
+  {
+    "id": "2026-08-12-neocities-cute",
+    "title": "Neocities Cute Tag",
+    "url": "https://neocities.org/browse?tag=cute",
+    "sourceType": "Personal Web",
+    "status": "MAYBE",
+    "folder": null,
+    "summary": "Personal-web source for pixel, diary, sticker, and handmade page structures.",
+    "frontendElements": {
+      "typography": [
+        "tiny body text",
+        "personal labels",
+        "decorative headings"
+      ],
+      "layout": [
+        "sidebar navigation",
+        "small room-like sections",
+        "link clusters"
+      ],
+      "color": [
+        "personal mixed palettes",
+        "soft high-contrast accents"
+      ],
+      "texture": [
+        "pixel art",
+        "stickers",
+        "handmade borders"
+      ],
+      "components": [
+        "guestbook links",
+        "mini tabs",
+        "badges",
+        "diary panels"
+      ],
+      "motion": [
+        "light cursor-era hover",
+        "small animated details"
+      ]
+    },
+    "avoid": [
+      "corporate polish",
+      "giant hero copy"
+    ],
+    "notes": "",
+    "createdAt": "2026-08-12T00:05:00+09:00",
+    "keptAt": null
+  }
+]
