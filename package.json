@@ -1,0 +1,12 @@
+{
+  "name": "analog-reference-curator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node work/analog-reference-curator/app/server.js",
+    "test": "node --test work/analog-reference-curator/app/*.test.js",
+    "refresh": "node work/analog-reference-curator/app/refresh.js",
+    "reminder": "node work/analog-reference-curator/app/reminder.js",
+    "automation:windows": "node work/analog-reference-curator/app/automation.js"
+  }
+}
