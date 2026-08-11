@@ -102,6 +102,54 @@ main {
   margin-bottom: 18px;
 }
 
+.brief-panel {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 7px;
+  padding: 14px;
+  background: rgba(255, 253, 247, 0.78);
+}
+
+.brief-panel h2 {
+  font-size: 19px;
+}
+
+.brief-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.brief-controls button {
+  border: 1px solid var(--ink);
+  border-radius: 5px;
+  background: #eaf7f1;
+  color: var(--ink);
+  padding: 9px 12px;
+  cursor: pointer;
+}
+
+.brief-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.brief-result {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.brief-result code {
+  color: var(--ink);
+}
+
 .folder-form {
   display: flex;
   align-items: end;
@@ -263,9 +311,15 @@ h2 {
 @media (max-width: 720px) {
   .topbar,
   .toolbar,
+  .brief-panel,
   .candidate-header {
     align-items: stretch;
+    grid-template-columns: 1fr;
     flex-direction: column;
+  }
+
+  .brief-controls {
+    justify-content: stretch;
   }
 
   .stats {

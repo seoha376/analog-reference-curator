@@ -1,11 +1,13 @@
 const http = require("http");
 const path = require("path");
 const fs = require("fs/promises");
+const { buildDesignBrief, buildFolderManifest } = require("./brief");
 
 const PORT = Number(process.env.PORT || 4173);
 const ROOT = path.resolve(__dirname, "..");
 const APP_DIR = path.join(ROOT, "app");
 const DATA_DIR = path.join(ROOT, "data");
+const LIBRARY_DIR = path.join(ROOT, "library");
 
 const FILES = {
   candidates: path.join(DATA_DIR, "candidates.json"),
@@ -117,6 +119,21 @@ async function createFolder(name) {
   return folder;
 }
 
+async function exportBrief(folderSlug) {
+  const [candidates, folders] = await Promise.all([readJson(FILES.candidates), readJson(FILES.folders)]);
+  const manifest = buildFolderManifest(folderSlug, candidates, folders, nowKstIso());
+  const folderDir = path.join(LIBRARY_DIR, folderSlug);
+  await fs.mkdir(folderDir, { recursive: true });
+  await writeJson(path.join(folderDir, "manifest.json"), manifest);
+  await fs.writeFile(path.join(folderDir, "design-brief.md"), buildDesignBrief(manifest), "utf8");
+  return {
+    folder: manifest.folder,
+    referenceCount: manifest.references.length,
+    manifestPath: `library/${folderSlug}/manifest.json`,
+    briefPath: `library/${folderSlug}/design-brief.md`
+  };
+}
+
 async function serveStatic(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
@@ -160,6 +177,12 @@ async function handleApi(req, res) {
 
   if (req.method === "POST" && url.pathname === "/api/folders") {
     sendJson(res, 201, await createFolder((await readBody(req)).name));
+    return;
+  }
+
+  const exportMatch = url.pathname.match(/^\/api\/folders\/([^/]+)\/export-brief$/);
+  if (req.method === "POST" && exportMatch) {
+    sendJson(res, 201, await exportBrief(exportMatch[1]));
     return;
   }
 

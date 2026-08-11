@@ -3,6 +3,9 @@ const stats = document.querySelector("#stats");
 const reviewToggle = document.querySelector("#reviewToggle");
 const folderForm = document.querySelector("#folderForm");
 const folderName = document.querySelector("#folderName");
+const briefFolder = document.querySelector("#briefFolder");
+const briefResult = document.querySelector("#briefResult");
+const exportBrief = document.querySelector("#exportBrief");
 const template = document.querySelector("#candidateTemplate");
 
 let state = {
@@ -31,6 +34,7 @@ async function loadState() {
 function render() {
   renderReviewToggle();
   renderStats();
+  renderBriefControls();
   renderBoard();
 }
 
@@ -56,6 +60,17 @@ function renderStats() {
     <span>${counts.MAYBE} maybe</span>
     <span>${counts.KILL} kill</span>
   `;
+}
+
+function renderBriefControls() {
+  briefFolder.replaceChildren();
+  state.folders.forEach((folder) => {
+    const keptCount = state.candidates.filter(
+      (candidate) => candidate.status === "KEEP" && candidate.folder === folder.slug
+    ).length;
+    briefFolder.append(new Option(`${folder.name} (${keptCount})`, folder.slug));
+  });
+  exportBrief.disabled = !state.folders.length;
 }
 
 function renderBoard() {
@@ -139,6 +154,14 @@ folderForm.addEventListener("submit", async (event) => {
   });
   folderName.value = "";
   await loadState();
+});
+
+exportBrief.addEventListener("click", async () => {
+  const slug = briefFolder.value;
+  if (!slug) return;
+  briefResult.textContent = "Exporting...";
+  const result = await request(`/api/folders/${slug}/export-brief`, { method: "POST" });
+  briefResult.innerHTML = `${result.referenceCount} references exported to <code>${result.briefPath}</code>`;
 });
 
 loadState().catch((error) => {
