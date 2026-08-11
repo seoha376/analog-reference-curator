@@ -47,6 +47,10 @@ function buildRefreshSummary(date, kept, fresh) {
   };
 }
 
+function chooseCandidatePool(seedCandidates, webCandidates) {
+  return Array.isArray(webCandidates) && webCandidates.length ? webCandidates : seedCandidates;
+}
+
 function todayKst() {
   return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
@@ -59,6 +63,15 @@ async function readJson(file) {
   return JSON.parse(await fs.readFile(file, "utf8"));
 }
 
+async function readJsonIfExists(file, fallback) {
+  try {
+    return await readJson(file);
+  } catch (error) {
+    if (error.code === "ENOENT") return fallback;
+    throw error;
+  }
+}
+
 async function writeJson(file, value) {
   await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
@@ -68,14 +81,16 @@ async function runDailyRefresh() {
   const now = nowKstIso();
   const candidatesFile = path.join(DATA_DIR, "candidates.json");
   const seedsFile = path.join(DATA_DIR, "seed-candidates.json");
+  const webCandidatesFile = path.join(DATA_DIR, "web-candidates.json");
   const reviewStateFile = path.join(DATA_DIR, "review-state.json");
 
-  const [existingCandidates, seedCandidates] = await Promise.all([
+  const [existingCandidates, seedCandidates, webCandidates] = await Promise.all([
     readJson(candidatesFile),
-    readJson(seedsFile)
+    readJson(seedsFile),
+    readJsonIfExists(webCandidatesFile, [])
   ]);
 
-  const candidates = refreshCandidates(existingCandidates, seedCandidates, date, now);
+  const candidates = refreshCandidates(existingCandidates, chooseCandidatePool(seedCandidates, webCandidates), date, now);
   await writeJson(candidatesFile, candidates);
   await writeJson(reviewStateFile, { date, reviewed: false, updatedAt: now });
 
@@ -99,6 +114,7 @@ if (require.main === module) {
 
 module.exports = {
   buildRefreshSummary,
+  chooseCandidatePool,
   refreshCandidates,
   runDailyRefresh
 };

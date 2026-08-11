@@ -2,6 +2,7 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs/promises");
 const { buildDesignBrief, buildFolderManifest } = require("./brief");
+const { analyzeCandidateUrl } = require("./analyze");
 
 const PORT = Number(process.env.PORT || 4173);
 const ROOT = path.resolve(__dirname, "..");
@@ -134,6 +135,21 @@ async function exportBrief(folderSlug) {
   };
 }
 
+async function analyzeCandidate(id) {
+  const candidates = await readJson(FILES.candidates);
+  const index = candidates.findIndex((candidate) => candidate.id === id);
+  if (index === -1) return null;
+
+  const analysis = await analyzeCandidateUrl(candidates[index].url);
+  candidates[index] = {
+    ...candidates[index],
+    analysis,
+    analyzedAt: nowKstIso()
+  };
+  await writeJson(FILES.candidates, candidates);
+  return candidates[index];
+}
+
 async function serveStatic(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
@@ -167,6 +183,17 @@ async function handleApi(req, res) {
   const candidateMatch = url.pathname.match(/^\/api\/candidates\/([^/]+)$/);
   if (req.method === "PATCH" && candidateMatch) {
     const candidate = await updateCandidate(candidateMatch[1], await readBody(req));
+    if (!candidate) {
+      sendJson(res, 404, { error: "Candidate not found" });
+      return;
+    }
+    sendJson(res, 200, candidate);
+    return;
+  }
+
+  const analysisMatch = url.pathname.match(/^\/api\/candidates\/([^/]+)\/analyze$/);
+  if (req.method === "POST" && analysisMatch) {
+    const candidate = await analyzeCandidate(analysisMatch[1]);
     if (!candidate) {
       sendJson(res, 404, { error: "Candidate not found" });
       return;

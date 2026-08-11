@@ -1,7 +1,6 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { refreshCandidates } = require("./refresh");
-const { buildRefreshSummary } = require("./refresh");
+const { buildRefreshSummary, chooseCandidatePool, refreshCandidates } = require("./refresh");
 
 const today = "2026-08-12";
 const now = "2026-08-12T00:05:00+09:00";
@@ -89,4 +88,16 @@ test("buildRefreshSummary includes Gmail-ready collection email", () => {
   assert.match(summary.email.subject, /Analog references collected/);
   assert.match(summary.email.body, /5 fresh candidates/);
   assert.match(summary.email.body, /http:\/\/127\.0\.0\.1:4173\//);
+});
+
+test("chooseCandidatePool prefers web-discovered candidates when present", () => {
+  const pool = chooseCandidatePool([{ id: "seed" }], [{ id: "web" }]);
+
+  assert.deepEqual(pool, [{ id: "web" }]);
+});
+
+test("chooseCandidatePool falls back to seeds when web-discovered candidates are empty", () => {
+  const pool = chooseCandidatePool([{ id: "seed" }], []);
+
+  assert.deepEqual(pool, [{ id: "seed" }]);
 });

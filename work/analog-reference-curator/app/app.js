@@ -114,6 +114,8 @@ function renderBoard() {
     node.querySelector(".open-link").href = candidate.url;
     node.querySelector(".summary").textContent = candidate.summary;
     node.querySelector(".cue-list").replaceChildren(...cueChips(candidate));
+    node.querySelector(".analysis").replaceChildren(...analysisChips(candidate));
+    node.querySelector(".analyze-button").addEventListener("click", () => analyzeCandidate(candidate.id));
 
     const statusRow = node.querySelector(".status-row");
     ["KEEP", "MAYBE", "KILL"].forEach((status) => {
@@ -147,6 +149,26 @@ function renderBoard() {
   });
 }
 
+function analysisChips(candidate) {
+  if (!candidate.analysis) {
+    const empty = document.createElement("span");
+    empty.className = "analysis-empty";
+    empty.textContent = "No v2 analysis yet.";
+    return [empty];
+  }
+
+  return [
+    `density: ${candidate.analysis.density}`,
+    ...candidate.analysis.colors.slice(0, 3).map((color) => `color: ${color}`),
+    ...candidate.analysis.fontFamilies.slice(0, 2).map((font) => `font: ${font}`)
+  ].map((value) => {
+    const chip = document.createElement("span");
+    chip.className = "analysis-chip";
+    chip.textContent = value;
+    return chip;
+  });
+}
+
 function cueChips(candidate) {
   const groups = candidate.frontendElements || {};
   return Object.entries(groups).flatMap(([group, values]) =>
@@ -164,6 +186,11 @@ async function saveCandidate(id, patch) {
     method: "PATCH",
     body: JSON.stringify(patch)
   });
+  await loadState();
+}
+
+async function analyzeCandidate(id) {
+  await request(`/api/candidates/${id}/analyze`, { method: "POST" });
   await loadState();
 }
 

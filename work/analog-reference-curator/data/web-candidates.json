@@ -1,0 +1,130 @@
+[
+  {
+    "id": "japan-web-design-gallery-kawaii",
+    "title": "Japan Web Design Gallery: Kawaii",
+    "url": "https://japanwebdesign.com/",
+    "sourceType": "Web Search",
+    "summary": "Modern Japanese web gallery with mood tags such as Kawaii, Quirky, Messy, Modern, and Trendy.",
+    "frontendElements": {
+      "typography": ["compact gallery labels", "commentary-led browsing"],
+      "layout": ["tag-filtered gallery", "quick-scan thumbnails", "dense listing"],
+      "color": ["varied Japanese brand palettes", "quirky accents"],
+      "texture": ["screen-capture collage", "mixed editorial references"],
+      "components": ["tag chips", "preview tiles", "sort controls"],
+      "motion": ["simple gallery hover"]
+    },
+    "avoid": ["flat template uniformity", "single-hue dashboard palette"]
+  },
+  {
+    "id": "sankou-cute-current",
+    "title": "SANKOU! Cute",
+    "url": "https://sankoudesign.com/category/cute/",
+    "sourceType": "Web Search",
+    "summary": "Frequently updated Japanese cute web category with current commercial examples and dates.",
+    "frontendElements": {
+      "typography": ["rounded headings", "compact Japanese captions", "date metadata"],
+      "layout": ["case index", "category browsing", "thumbnail rhythm"],
+      "color": ["fresh mixed palettes", "soft brand accents"],
+      "texture": ["polished but warm surfaces", "light paper shadows"],
+      "components": ["case cards", "tags", "date labels"],
+      "motion": ["light hover lifts"]
+    },
+    "avoid": ["cold corporate polish", "generic SaaS card stacks"]
+  },
+  {
+    "id": "kawaii-db-current",
+    "title": "Kawaii DB",
+    "url": "https://kawaiie.taniweb.jp/",
+    "sourceType": "Web Search",
+    "summary": "Cute and feminine Japanese web design gallery with recent posts and color/category browsing.",
+    "frontendElements": {
+      "typography": ["small captions", "friendly headings", "soft Japanese editorial rhythm"],
+      "layout": ["dense gallery grid", "compact metadata", "image-text cadence"],
+      "color": ["soft pastels", "low-contrast borders", "gentle accents"],
+      "texture": ["paper-like whitespace", "sticker-like thumbnails"],
+      "components": ["thumbnail cards", "category filters", "tiny badges"],
+      "motion": ["gentle hover emphasis"]
+    },
+    "avoid": ["large SaaS hero", "dark startup gradient"]
+  },
+  {
+    "id": "neocities-cute-current",
+    "title": "Neocities Cute Tag",
+    "url": "https://neocities.org/browse?tag=cute",
+    "sourceType": "Web Search",
+    "summary": "Personal-web source for cute, kawaii, pixel, diary, and handmade page structures.",
+    "frontendElements": {
+      "typography": ["tiny body text", "personal labels", "decorative headings"],
+      "layout": ["sidebar navigation", "small room-like sections", "link clusters"],
+      "color": ["personal mixed palettes", "soft high-contrast accents"],
+      "texture": ["pixel art", "stickers", "handmade borders"],
+      "components": ["guestbook links", "mini tabs", "badges", "diary panels"],
+      "motion": ["small animated details"]
+    },
+    "avoid": ["corporate polish", "giant hero copy"]
+  },
+  {
+    "id": "handmade-sites-workshop",
+    "title": "Handmade Sites",
+    "url": "https://handmade-sites.neocities.org/",
+    "sourceType": "Web Search",
+    "summary": "Workshop/resource site with handmade web inspiration, readings, and resource links.",
+    "frontendElements": {
+      "typography": ["workshop labels", "resource list text"],
+      "layout": ["resource sections", "inspiration list", "simple handmade structure"],
+      "color": ["plain web colors", "light resource-page contrast"],
+      "texture": ["hand-coded page feel", "low-friction structure"],
+      "components": ["resource lists", "embedded presentation", "link blocks"],
+      "motion": ["minimal motion"]
+    },
+    "avoid": ["template marketplace polish", "overdesigned landing page"]
+  },
+  {
+    "id": "itinerae-layouts",
+    "title": "Itinerae",
+    "url": "https://itinerae.neocities.org/",
+    "sourceType": "Web Search",
+    "summary": "Personal resource site offering cute HTML/CSS layouts, pastel details, pixels, stickers, and lace borders.",
+    "frontendElements": {
+      "typography": ["small personal copy", "resource update labels"],
+      "layout": ["premade layout index", "asset sections", "compact update log"],
+      "color": ["pastels", "high-contrast accents"],
+      "texture": ["pixel details", "stickers", "lace borders"],
+      "components": ["layout previews", "update log", "asset links"],
+      "motion": ["personal-site micro motion"]
+    },
+    "avoid": ["large SaaS hero", "cold dashboard chrome"]
+  },
+  {
+    "id": "my-web-collection",
+    "title": "My Web Collection",
+    "url": "https://web-collection.neocities.org/",
+    "sourceType": "Web Search",
+    "summary": "Curated personal-web collection with cute, nostalgic, animated, and exploratory websites.",
+    "frontendElements": {
+      "typography": ["personal commentary", "small listing copy"],
+      "layout": ["curated list", "separated reference entries", "exploratory browsing"],
+      "color": ["bright personal palettes", "glow-in-the-dark accents"],
+      "texture": ["old-web collection feel", "personal screenshots"],
+      "components": ["reference entries", "comment blocks", "collection dividers"],
+      "motion": ["animated web references"]
+    },
+    "avoid": ["generic marketplace layouts"]
+  },
+  {
+    "id": "ashitano-design-cute",
+    "title": "Ashitano Design: Cute",
+    "url": "https://www.ashitano-design.com/category/design/cute/",
+    "sourceType": "Web Search",
+    "summary": "Japanese web design gallery category for cute references, including food, brand, portfolio, and product sites.",
+    "frontendElements": {
+      "typography": ["gallery titles", "Japanese case labels"],
+      "layout": ["category archive", "case list", "compact browsing"],
+      "color": ["food and brand palettes", "soft commercial accents"],
+      "texture": ["gallery archive feel", "screen-led browsing"],
+      "components": ["case links", "category labels", "preview entries"],
+      "motion": ["simple browse interactions"]
+    },
+    "avoid": ["over-polished SaaS composition"]
+  }
+]
