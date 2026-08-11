@@ -53,6 +53,9 @@ test("buildFolderManifest compresses kept references for one folder", () => {
     "tiny badges",
     "gentle hover emphasis"
   ]);
+  assert.deepEqual(manifest.cueGroups.typography, ["small captions"]);
+  assert.deepEqual(manifest.cueGroups.layout, ["dense gallery grid"]);
+  assert.deepEqual(manifest.noteHighlights, ["Keep the tiny captions."]);
 });
 
 test("buildDesignBrief renders a development-ready markdown brief", () => {
@@ -62,6 +65,9 @@ test("buildDesignBrief renders a development-ready markdown brief", () => {
   assert.match(brief, /^# Stationery Desk Design Brief/);
   assert.match(brief, /## Typography/);
   assert.match(brief, /small captions/);
+  assert.match(brief, /## Implementation Directions/);
+  assert.match(brief, /Use this folder when building personal portfolio, small brand hub, project notebook/);
+  assert.match(brief, /Keep the tiny captions\./);
   assert.match(brief, /## Things To Avoid/);
   assert.match(brief, /large SaaS hero/);
   assert.match(brief, /https:\/\/kawaiie\.taniweb\.jp\//);

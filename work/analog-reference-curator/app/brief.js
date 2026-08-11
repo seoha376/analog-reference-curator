@@ -17,19 +17,27 @@ function buildFolderManifest(folderSlug, candidates, folders, updatedAt) {
       avoid: candidate.avoid || []
     }));
 
+  const cueGroups = groupCues(references);
+  const noteHighlights = unique(references.map((reference) => reference.notes).filter(Boolean));
+  const avoid = unique(references.flatMap((reference) => reference.avoid || []));
+
   return {
     folder: folder.slug,
     name: folder.name,
     updatedAt,
     mood: folder.mood || [],
     references,
+    cueGroups,
+    noteHighlights,
+    avoid,
     tokens: inferTokens(references)
   };
 }
 
 function buildDesignBrief(manifest) {
-  const cueGroups = groupCues(manifest.references);
-  const avoid = unique(manifest.references.flatMap((reference) => reference.avoid || []));
+  const cueGroups = manifest.cueGroups || groupCues(manifest.references);
+  const avoid = manifest.avoid || unique(manifest.references.flatMap((reference) => reference.avoid || []));
+  const useCases = bestUseCases(manifest);
 
   return [
     `# ${manifest.name} Design Brief`,
@@ -40,13 +48,21 @@ function buildDesignBrief(manifest) {
     listOrEmpty(manifest.mood),
     "",
     "## Best-Use Cases",
-    listOrEmpty(bestUseCases(manifest)),
+    listOrEmpty(useCases),
     "",
     "## Visual Principles",
     listOrEmpty([
       "Prefer compressed, inspectable UI ingredients over raw URL piles.",
       `Keep density ${manifest.tokens.density} with ${manifest.tokens.radius} radius and ${manifest.tokens.shadow} shadow.`,
       `Use a ${manifest.tokens.colorMood} color mood and ${manifest.tokens.typeMood} type mood.`
+    ]),
+    "",
+    "## Implementation Directions",
+    listOrEmpty([
+      `Use this folder when building ${useCases.join(", ")}.`,
+      "Start from the layout cues first, then layer typography, texture, and motion.",
+      ...implementationDirections(cueGroups),
+      ...noteDirections(manifest.noteHighlights || [])
     ]),
     "",
     "## Typography",
@@ -73,6 +89,22 @@ function buildDesignBrief(manifest) {
     ),
     ""
   ].join("\n");
+}
+
+function implementationDirections(cueGroups) {
+  const directions = [];
+  if (cueGroups.layout.length) directions.push(`Layout: ${cueGroups.layout.join("; ")}.`);
+  if (cueGroups.typography.length) directions.push(`Typography: ${cueGroups.typography.join("; ")}.`);
+  if (cueGroups.components.length) directions.push(`Components: ${cueGroups.components.join("; ")}.`);
+  if (cueGroups.color.length || cueGroups.texture.length) {
+    directions.push(`Surface: ${[...cueGroups.color, ...cueGroups.texture].join("; ")}.`);
+  }
+  if (cueGroups.motion.length) directions.push(`Motion: ${cueGroups.motion.join("; ")}.`);
+  return directions;
+}
+
+function noteDirections(notes) {
+  return notes.map((note) => `User note: ${note}`);
 }
 
 function flattenCues(frontendElements = {}) {
