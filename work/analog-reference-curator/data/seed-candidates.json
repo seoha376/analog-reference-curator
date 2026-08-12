@@ -1,0 +1,162 @@
+[
+  {
+    "id": "kawaii-db",
+    "title": "Kawaii DB",
+    "url": "https://kawaiie.taniweb.jp/",
+    "sourceType": "Gallery",
+    "summary": "Women's-oriented and cute Japanese web gallery with soft commercial layouts, cafes, lifestyle brands, and color browsing.",
+    "frontendElements": {
+      "typography": ["small captions", "friendly headings", "soft Japanese editorial rhythm"],
+      "layout": ["dense gallery grid", "compact metadata", "image-text cadence"],
+      "color": ["soft pastels", "low-contrast borders", "gentle accents"],
+      "texture": ["paper-like whitespace", "sticker-like thumbnails"],
+      "components": ["tiny badges", "thumbnail cards", "category filters"],
+      "motion": ["gentle hover emphasis"]
+    },
+    "avoid": ["large SaaS hero", "dark startup gradient"]
+  },
+  {
+    "id": "choooodoii-cute",
+    "title": "Choooodoii Cute Gallery",
+    "url": "https://choooodoii.com/design/cute/",
+    "sourceType": "Gallery",
+    "summary": "Retro, nostalgic, and cute Japanese web examples with helpful commentary for extracting taste.",
+    "frontendElements": {
+      "typography": ["handwritten titles", "small explanatory copy", "nostalgic display lettering"],
+      "layout": ["boxed sections", "small shop-like modules", "editorial spacing"],
+      "color": ["candy colors", "warm neutrals", "faded retro accents"],
+      "texture": ["snack-box feeling", "illustration texture", "thin dividers"],
+      "components": ["comment blocks", "category labels", "small framed images"],
+      "motion": ["subtle button hover", "calm page transitions"]
+    },
+    "avoid": ["over-polished template feel", "oversized gradient sections"]
+  },
+  {
+    "id": "sankou-cute",
+    "title": "SANKOU! Cute",
+    "url": "https://sankoudesign.com/category/cute/",
+    "sourceType": "Gallery",
+    "summary": "Frequently updated Japanese commercial web gallery with cute examples that still feel applicable to real services.",
+    "frontendElements": {
+      "typography": ["rounded headings", "compact Japanese captions", "clear metadata"],
+      "layout": ["filterable index", "thumbnail rhythm", "commercial landing sections"],
+      "color": ["fresh mixed palettes", "soft brand accents"],
+      "texture": ["polished but warm surfaces", "light paper shadows"],
+      "components": ["tags", "case cards", "date labels"],
+      "motion": ["light hover lifts", "gallery browsing motion"]
+    },
+    "avoid": ["generic SaaS cards", "cold corporate polish"]
+  },
+  {
+    "id": "sankou-retro",
+    "title": "SANKOU! Retro",
+    "url": "https://sankoudesign.com/",
+    "sourceType": "Gallery",
+    "summary": "Useful for retro, paper, regional, and editorial references that stay quieter than pure kawaii.",
+    "frontendElements": {
+      "typography": ["regional display type", "editorial captions"],
+      "layout": ["case index", "article-like detail pages", "filtered browsing"],
+      "color": ["quiet warm palettes", "heritage accents"],
+      "texture": ["paper cues", "local poster feeling"],
+      "components": ["filter chips", "preview cards", "date labels"],
+      "motion": ["subtle link motion"]
+    },
+    "avoid": ["too much kawaii", "cold dashboard feeling"]
+  },
+  {
+    "id": "japan-web-design-gallery",
+    "title": "Japan Web Design Gallery",
+    "url": "https://japanwebdesign.com/",
+    "sourceType": "Gallery",
+    "summary": "Japanese web gallery with tags like Kawaii, Quirky, and Messy for fast mood-based browsing.",
+    "frontendElements": {
+      "typography": ["tag-driven labels", "compact listing text"],
+      "layout": ["tag browsing", "multi-column gallery", "quick-scan thumbnails"],
+      "color": ["varied Japanese brand palettes", "quirky accents"],
+      "texture": ["mixed media cues", "screen-capture collage"],
+      "components": ["tag chips", "gallery filters", "preview tiles"],
+      "motion": ["simple hover feedback"]
+    },
+    "avoid": ["single-hue palette", "flat template uniformity"]
+  },
+  {
+    "id": "stock-pulpxstyle",
+    "title": "Stock",
+    "url": "https://stock.pulpxstyle.com/",
+    "sourceType": "Gallery",
+    "summary": "Japanese food, travel, lifestyle, and culture sites with commercial polish that is not overly slick.",
+    "frontendElements": {
+      "typography": ["small brand copy", "catalog labels"],
+      "layout": ["lifestyle grid", "compact item collections"],
+      "color": ["food and retail palettes", "gentle contrast"],
+      "texture": ["product photography warmth", "light border work"],
+      "components": ["listing cards", "small tags", "source metadata"],
+      "motion": ["calm hover states"]
+    },
+    "avoid": ["generic startup tone", "oversized claims"]
+  },
+  {
+    "id": "muuuuu",
+    "title": "MUUUU.ORG",
+    "url": "https://muuuuu.org/",
+    "sourceType": "Gallery",
+    "summary": "High-quality Japanese and global web cases with useful filtering and screenshot-led browsing.",
+    "frontendElements": {
+      "typography": ["clean metadata", "polished headings"],
+      "layout": ["filtered gallery", "screenshot index", "high-fidelity grids"],
+      "color": ["refined mixed palettes"],
+      "texture": ["polished surfaces", "image-heavy references"],
+      "components": ["filters", "preview tiles", "taxonomy labels"],
+      "motion": ["professional hover feedback"]
+    },
+    "avoid": ["overly premium sameness", "large SaaS hero"]
+  },
+  {
+    "id": "collected",
+    "title": "Collected",
+    "url": "https://collected.li/",
+    "sourceType": "Gallery",
+    "summary": "Shuffle-style curation for experimental and editorial web references with useful accidents.",
+    "frontendElements": {
+      "typography": ["editorial labels", "compact link text"],
+      "layout": ["shuffled grid", "collection browsing"],
+      "color": ["unexpected accents", "mixed visual systems"],
+      "texture": ["collage-like browsing", "varied screenshots"],
+      "components": ["collection tiles", "small labels"],
+      "motion": ["light browse interactions"]
+    },
+    "avoid": ["over-structured template feel"]
+  },
+  {
+    "id": "neocities-cute",
+    "title": "Neocities Cute Tag",
+    "url": "https://neocities.org/browse?tag=cute",
+    "sourceType": "Personal Web",
+    "summary": "Personal-web source for pixel, diary, sticker, and handmade page structures.",
+    "frontendElements": {
+      "typography": ["tiny body text", "personal labels", "decorative headings"],
+      "layout": ["sidebar navigation", "small room-like sections", "link clusters"],
+      "color": ["personal mixed palettes", "soft high-contrast accents"],
+      "texture": ["pixel art", "stickers", "handmade borders"],
+      "components": ["guestbook links", "mini tabs", "badges", "diary panels"],
+      "motion": ["light cursor-era hover", "small animated details"]
+    },
+    "avoid": ["corporate polish", "giant hero copy"]
+  },
+  {
+    "id": "neocities-handmade",
+    "title": "Neocities Handmade Tag",
+    "url": "https://neocities.org/browse?tag=handmade",
+    "sourceType": "Personal Web",
+    "summary": "Handmade web pages with small-room structures, personal navigation, and imperfect texture.",
+    "frontendElements": {
+      "typography": ["personal menu labels", "tiny paragraphs"],
+      "layout": ["sidebars", "link rooms", "dense small sections"],
+      "color": ["idiosyncratic palettes", "strong small accents"],
+      "texture": ["handmade borders", "pixel fragments", "lo-fi surfaces"],
+      "components": ["link lists", "diary panels", "badges"],
+      "motion": ["small animated details"]
+    },
+    "avoid": ["template marketplace polish"]
+  }
+]
