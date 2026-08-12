@@ -188,6 +188,24 @@ textarea {
   line-height: 1.45;
 }
 
+.cue-details {
+  border: 1px dashed var(--line);
+  border-radius: 7px;
+  background: #fffaf0;
+  padding: 8px 10px;
+}
+
+.cue-details summary {
+  color: var(--muted);
+  cursor: pointer;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.cue-details .chips {
+  margin-top: 8px;
+}
+
 .chips span {
   background: #fff6e7;
   color: #5e5145;

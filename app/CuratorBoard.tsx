@@ -125,13 +125,16 @@ export function CuratorBoard({ initialCandidates, folders }: Props) {
                 </a>
               </div>
               <p className="summary">{candidate.summary}</p>
-              <div className="chips">
-                {Object.entries(candidate.frontendElements)
-                  .flatMap(([group, values]) => values.slice(0, 2).map((value) => `${group}: ${value}`))
-                  .map((chip) => (
-                    <span key={chip}>{chip}</span>
-                  ))}
-              </div>
+              <details className="cue-details">
+                <summary>UI cues</summary>
+                <div className="chips">
+                  {Object.entries(candidate.frontendElements)
+                    .flatMap(([group, values]) => values.slice(0, 2).map((value) => `${group}: ${value}`))
+                    .map((chip) => (
+                      <span key={chip}>{chip}</span>
+                    ))}
+                </div>
+              </details>
               <div className="statuses">
                 {(["KEEP", "MAYBE", "KILL"] as const).map((status) => (
                   <button

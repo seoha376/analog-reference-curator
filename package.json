@@ -10,7 +10,7 @@
     "build": "vinext build",
     "start": "node work/analog-reference-curator/app/server.js",
     "site:start": "vinext start",
-    "test": "node --test work/analog-reference-curator/app/*.test.js",
+    "test": "node --test work/analog-reference-curator/app/*.test.js app/*.test.cjs",
     "refresh": "node work/analog-reference-curator/app/refresh.js",
     "reminder": "node work/analog-reference-curator/app/reminder.js",
     "automation:windows": "node work/analog-reference-curator/app/automation.js"
